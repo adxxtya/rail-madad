@@ -137,7 +137,7 @@ const Page: React.FC = () => {
         alt="train"
       />
       <div className="absolute left-0 top-0 -z-10 h-full w-full bg-black opacity-50"></div>
-      <div className="h-full w-full p-20 pt-12">
+      <div className="h-full w-full p-16 pt-12">
         <div className="flex h-full w-full rounded-2xl bg-white">
           {trackingNumber !== null ? (
             <div className="flex h-full w-full items-center justify-center">
@@ -186,13 +186,13 @@ const Page: React.FC = () => {
               </div>
 
               {/* Right Side for Form */}
-              <div className="flex h-full w-1/2 flex-col justify-center p-10">
+              <div className="flex h-full w-1/2 flex-col justify-center p-16">
                 <h2 className="mb-6 text-2xl font-bold">
                   Register Your Complaint
                 </h2>
                 <form
                   onSubmit={handleSubmit}
-                  className="flex flex-col justify-center gap-6"
+                  className="flex flex-col justify-center gap-3"
                 >
                   <label className="text-gray-700">
                     Your Email (for follow-up)
