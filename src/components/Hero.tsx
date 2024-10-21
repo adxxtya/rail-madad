@@ -35,6 +35,12 @@ const Hero = () => {
             className="h-full w-full scale-x-[-1] rounded-3xl object-cover"
           />
         </div>
+        <Link href={"/chat"}>
+          <div className="fixed bottom-10 right-10 flex items-center bg-[#C24A98FF] text-white p-4 rounded-full shadow-lg transition-transform transform hover:bg-[#9B1E47] cursor-pointer">
+            <span className="text-xl mr-2">🤖</span> 
+            <span>Rail Madad AI Chat</span>
+          </div>
+        </Link>
       </div>
     </div>
   );
