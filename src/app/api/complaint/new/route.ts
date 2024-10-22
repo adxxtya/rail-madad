@@ -15,14 +15,25 @@ export async function POST(req: Request) {
     const { email, name, phoneNumber, info, complaintMediaUrl } =
       await req.json();
 
-    // Create a new journal and journal note
+    // Add POST request to another endpoint
+    const response = await fetch(
+      `https://7dw5tzcs-5000.inc1.devtunnels.ms/classify?image_url=${complaintMediaUrl}`,
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to send data to external endpoint");
+    }
+
+    const aiMlSummary = await response.json();
+
     const newComplaint = await db.complaint.create({
       data: {
-        complaintMediaUrl: complaintMediaUrl,
-        email: email,
-        name: name,
-        phoneNumber: phoneNumber,
-        info: info,
+        complaintMediaUrl,
+        email,
+        name,
+        phoneNumber,
+        info,
+        summary: aiMlSummary,
       },
     });
 

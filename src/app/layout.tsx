@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { NextAuthProvider } from "@/providers/NextAuthProvider";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -14,11 +15,17 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
-        <Navbar>{children}</Navbar>
-        <Toaster />
-      </body>
+    <html
+      lang="en"
+      className={`${GeistSans.variable}`}
+      suppressHydrationWarning
+    >
+      <NextAuthProvider>
+        <body>
+          <Navbar>{children}</Navbar>
+          <Toaster />
+        </body>
+      </NextAuthProvider>
     </html>
   );
 }

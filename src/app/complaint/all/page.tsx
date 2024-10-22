@@ -14,6 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { db } from "@/server/db";
+import Link from "next/link";
 
 const page = async () => {
   // Fetch complaints from the database
@@ -76,7 +77,12 @@ const page = async () => {
             {complaints.map((complaint) => (
               <TableRow key={complaint.id}>
                 <TableCell className="font-medium">{complaint.name}</TableCell>
-                <TableCell className="font-medium">{complaint.info}</TableCell>
+
+                <Link href={`/complaint/all/${complaint.id}`}>
+                  <TableCell className="font-medium hover:underline">
+                    {complaint.info}
+                  </TableCell>
+                </Link>
                 <TableCell>
                   <div className="flex items-center">
                     {renderMediaPreview(complaint.complaintMediaUrl)}

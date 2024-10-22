@@ -1,8 +1,10 @@
 import React from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { getServerAuthSession } from "@/server/auth";
 
-const Hero = () => {
+const Hero = async () => {
+  const session = await getServerAuthSession();
   return (
     <div className="flex h-full w-full p-24 pt-6">
       <div className="flex h-full w-full flex-col justify-center gap-8 p-6">
@@ -35,9 +37,17 @@ const Hero = () => {
             className="h-full w-full scale-x-[-1] rounded-3xl object-cover"
           />
         </div>
+        {session !== null && (
+          <Link href={"/priority"}>
+            <div className="fixed bottom-28 right-10 flex transform cursor-pointer items-center rounded-full bg-amber-700 p-4 text-white shadow-lg transition-transform hover:bg-[#9B1E47]">
+              <span className="mr-2 text-xl">🔢</span>
+              <span>Admin Prioirty Queue</span>
+            </div>
+          </Link>
+        )}
         <Link href={"/chat"}>
-          <div className="fixed bottom-10 right-10 flex items-center bg-[#C24A98FF] text-white p-4 rounded-full shadow-lg transition-transform transform hover:bg-[#9B1E47] cursor-pointer">
-            <span className="text-xl mr-2">🤖</span> 
+          <div className="fixed bottom-10 right-10 flex transform cursor-pointer items-center rounded-full bg-[#C24A98FF] p-4 text-white shadow-lg transition-transform hover:bg-[#9B1E47]">
+            <span className="mr-2 text-xl">🤖</span>
             <span>Rail Madad AI Chat</span>
           </div>
         </Link>

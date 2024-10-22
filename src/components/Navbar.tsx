@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
+import NavbarActions from "./NavbarActions";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -12,11 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ children }) => {
         <Link href={"/"} className="text-4xl font-bold text-white">
           RailMadadAI
         </Link>
-        <Link href={"/complaint/track"}>
-          <Button variant={"secondary"} className="h-10 font-bold">
-            Track your complaint
-          </Button>
-        </Link>
+        <NavbarActions />
       </div>
       <main>{children}</main>
     </>
