@@ -24,6 +24,8 @@ export async function POST(req: Request) {
       throw new Error("Failed to send data to external endpoint");
     }
 
+    console.log("response,  ", response);
+
     const aiMlSummary = await response.json();
 
     const newComplaint = await db.complaint.create({
@@ -33,7 +35,8 @@ export async function POST(req: Request) {
         name,
         phoneNumber,
         info,
-        summary: aiMlSummary,
+        summary: aiMlSummary.summary,
+        category: aiMlSummary.problem_category,
       },
     });
 

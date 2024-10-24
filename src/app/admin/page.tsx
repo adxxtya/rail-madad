@@ -108,29 +108,24 @@ export default function Signin() {
     switch (page) {
       case "auth-page":
         return (
-          <div className="bg-bg flex h-screen w-full flex-col items-center justify-center gap-8 pb-20 text-center text-white">
-            <div className="rounded-lg bg-gray-900 p-8 shadow-lg">
-              <Image
-                width={200}
-                height={200}
-                src={"/personalgrowth.svg"}
-                alt="personal"
-              />
-              <div className="mt-8 text-4xl font-bold">
+          <div className="flex h-screen w-full flex-col items-center justify-center gap-8 bg-white pb-20 text-center text-black">
+            <div className="rounded-lg bg-gray-100 p-8 shadow-lg">
+              <div className="mt-8 text-4xl font-bold text-gray-800">
                 Welcome to Rail Madad!
               </div>
-              <div className="mt-4 text-lg text-gray-300">
+              <div className="mt-4 text-lg text-gray-600">
                 Helping you resolve rail-related issues.
               </div>
               <div className="mt-8">
                 <Button
-                  className="w-full rounded-md bg-indigo-500 py-3 text-base font-medium hover:bg-indigo-600"
+                  className="w-full rounded-md bg-blue-500 py-3 text-base font-medium text-white hover:bg-blue-600"
                   onClick={() => setPage("register")}
                 >
                   Create an Admin Account
                 </Button>
                 <Button
-                  className="mt-4 w-full py-2 text-sm text-indigo-400 underline"
+                  variant={"link"}
+                  className="mt-4 w-full py-2 text-sm text-blue-500 underline"
                   onClick={() => setPage("signin")}
                 >
                   Already have an account? Sign In
@@ -142,42 +137,46 @@ export default function Signin() {
 
       case "signin":
         return (
-          <div className="flex h-screen w-full items-center justify-center bg-gray-900 text-white">
-            <div className="w-full max-w-md rounded-lg bg-gray-800 p-8 shadow-lg">
+          <div className="flex h-screen w-full items-center justify-center bg-white text-black">
+            <div className="w-full max-w-md rounded-lg bg-gray-100 p-8 shadow-lg">
               <div className="flex justify-start">
                 <button
                   onClick={() => setPage("auth-page")}
-                  className="text-gray-500 hover:text-white"
+                  className="text-gray-500 hover:text-black"
                 >
                   <MoveLeft />
                 </button>
               </div>
-              <h1 className="text-4xl font-bold">Sign In</h1>
-              <p className="mt-2 text-lg text-gray-400">
+              <h1 className="text-4xl font-bold text-gray-800">Sign In</h1>
+              <p className="mt-2 text-lg text-gray-600">
                 Welcome back, you've been missed.
               </p>
               <form onSubmit={onSubmitLogin} className="mt-8">
-                <label className="block pb-1 text-sm">E-mail</label>
+                <label className="block pb-1 text-sm text-gray-700">
+                  E-mail
+                </label>
                 <input
                   type="email"
                   required
                   value={emailLogin}
                   onChange={(e) => setEmailLogin(e.target.value)}
-                  className="w-full rounded-md bg-gray-700 px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 bg-white px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-blue-500"
                 />
-                <label className="mt-4 block pb-1 text-sm">Password</label>
+                <label className="mt-4 block pb-1 text-sm text-gray-700">
+                  Password
+                </label>
                 <input
                   type="password"
                   required
                   value={passwordLogin}
                   onChange={(e) => setPasswordLogin(e.target.value)}
-                  className="w-full rounded-md bg-gray-700 px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 bg-white px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-blue-500"
                 />
                 {errorLogin && (
                   <div className="mt-4 text-sm text-red-500">{errorLogin}</div>
                 )}
                 <Button
-                  className="mt-8 w-full rounded-md bg-indigo-500 py-3 text-lg font-medium hover:bg-indigo-600"
+                  className="mt-8 w-full rounded-md bg-blue-500 py-3 text-lg font-medium text-white hover:bg-blue-600"
                   disabled={loading}
                 >
                   {loading ? <Loader className="animate-spin" /> : "Login"}
@@ -189,22 +188,24 @@ export default function Signin() {
 
       case "register":
         return (
-          <div className="flex h-screen w-full items-center justify-center bg-gray-900 text-white">
-            <div className="w-full max-w-md rounded-lg bg-gray-800 p-8 shadow-lg">
+          <div className="flex h-screen w-full items-center justify-center bg-white text-black">
+            <div className="w-full max-w-md rounded-lg bg-gray-100 p-8 shadow-lg">
               <div className="flex justify-start">
                 <button
                   onClick={() => setPage("auth-page")}
-                  className="text-gray-500 hover:text-white"
+                  className="text-gray-500 hover:text-black"
                 >
                   <MoveLeft />
                 </button>
               </div>
-              <h1 className="text-4xl font-bold">Register</h1>
-              <p className="mt-2 text-lg text-gray-400">
+              <h1 className="text-4xl font-bold text-gray-800">Register</h1>
+              <p className="mt-2 text-lg text-gray-600">
                 Create your admin account today.
               </p>
               <form onSubmit={onSubmitRegister} className="mt-8">
-                <label className="block pb-1 text-sm">Username</label>
+                <label className="block pb-1 text-sm text-gray-700">
+                  Username
+                </label>
                 <input
                   type="text"
                   required
@@ -214,9 +215,11 @@ export default function Signin() {
                     const filteredValue = value.replace(/[^a-z0-9.-]/g, "");
                     setUsernameRegister(filteredValue);
                   }}
-                  className="w-full rounded-md bg-gray-700 px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 bg-white px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-blue-500"
                 />
-                <label className="mt-4 block pb-1 text-sm">E-mail</label>
+                <label className="mt-4 block pb-1 text-sm text-gray-700">
+                  E-mail
+                </label>
                 <input
                   type="email"
                   required
@@ -224,15 +227,17 @@ export default function Signin() {
                   onChange={(e) =>
                     setEmailRegister(e.target.value.toLowerCase())
                   }
-                  className="w-full rounded-md bg-gray-700 px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 bg-white px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-blue-500"
                 />
-                <label className="mt-4 block pb-1 text-sm">Password</label>
+                <label className="mt-4 block pb-1 text-sm text-gray-700">
+                  Password
+                </label>
                 <input
                   type="password"
                   required
                   value={passwordRegister}
                   onChange={(e) => setPasswordRegister(e.target.value)}
-                  className="w-full rounded-md bg-gray-700 px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 bg-white px-3 py-4 text-sm placeholder-gray-400 focus:ring-2 focus:ring-blue-500"
                 />
                 {errorRegister && (
                   <div className="mt-4 text-sm text-red-500">
@@ -240,7 +245,7 @@ export default function Signin() {
                   </div>
                 )}
                 <Button
-                  className="mt-8 w-full rounded-md bg-indigo-500 py-3 text-lg font-medium hover:bg-indigo-600"
+                  className="mt-8 w-full rounded-md bg-blue-500 py-3 text-lg font-medium text-white hover:bg-blue-600"
                   disabled={loading}
                 >
                   {loading ? <Loader className="animate-spin" /> : "Register"}

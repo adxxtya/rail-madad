@@ -1,4 +1,5 @@
 import { db } from "@/server/db";
+import ReactMarkdown from "react-markdown"; // Import ReactMarkdown
 
 interface PageProps {
   params: {
@@ -63,8 +64,10 @@ const ComplaintPage: React.FC<PageProps> = async ({ params }) => {
               Summary of the Complaint:
             </p>
             <p className="text-lg">
-              {complaint.summary ??
-                "This complaint requires administrative governance, please wait until further processing."}
+              <ReactMarkdown>
+                {complaint.summary ??
+                  "This complaint requires administrative governance, please wait until further processing."}
+              </ReactMarkdown>
             </p>
           </div>
 
@@ -91,7 +94,7 @@ const ComplaintPage: React.FC<PageProps> = async ({ params }) => {
         </div>
 
         {/* Right Side: Complaint Media */}
-        <div className="flex items-center justify-center">
+        <div className="flex items-start justify-center">
           {complaint.complaintMediaUrl ? (
             <img
               src={complaint.complaintMediaUrl}

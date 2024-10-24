@@ -59,7 +59,20 @@ const Page: React.FC = () => {
     }
 
     const file = formData.complaintMedia;
-    const fileName = file.name; // Extract the file name
+    let fileName = file.name; // Extract the file name
+
+    // Generate random 3-letter string
+    const randomString = Math.random()
+      .toString(36)
+      .substring(2, 5)
+      .toUpperCase();
+
+    // Get the file extension
+    const fileExtension = fileName.split(".").pop();
+    const fileNameWithoutExtension = fileName.replace(`.${fileExtension}`, "");
+
+    // Append random string to the file name
+    fileName = `${fileNameWithoutExtension}-${randomString}.${fileExtension}`;
 
     try {
       const { error } = await supabase.storage

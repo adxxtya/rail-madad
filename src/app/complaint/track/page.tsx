@@ -121,6 +121,13 @@ const Page: React.FC = () => {
                       <strong>Statement:</strong> {complaintDetails.info}
                     </p>
                     <p>
+                      <strong>Problem Category:</strong>{" "}
+                      {complaintDetails.category}
+                    </p>
+                    <p className="line-clamp-2">
+                      <strong>Summary:</strong> {complaintDetails.summary}
+                    </p>
+                    <p>
                       <strong>Email:</strong> {complaintDetails.email}
                     </p>
                     <p>
